@@ -4,9 +4,7 @@ import sys
 import math
 import pygame as pg
 
-
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
 
 
 def main():
@@ -42,7 +40,7 @@ def main():
     bg_speed = 20
 
     # こうかとんの移動速度
-    bird_speed = 8
+    bird_speed = 20
 
     while True:
         for event in pg.event.get():
@@ -52,10 +50,51 @@ def main():
         # キー入力
         key_lst = pg.key.get_pressed()
 
-        # 背景を高速で移動させる
+        # 背景の移動
         x = (tmr * bg_speed) % 3200
 
-        screen.blit(bg_img, [0, 0])
+        screen.blit(bg_img, [-x, 0])
+        screen.blit(bg_img2, [-x + 1600, 0])
+        screen.blit(bg_img, [-x + 3200, 0])
+
+        # こうかとんの移動
+        vx = 0
+        vy = 0
+
+        if key_lst[pg.K_RIGHT]:
+            vx = bg_speed + bird_speed
+
+        if key_lst[pg.K_LEFT]:
+            vx = -bird_speed
+
+        if key_lst[pg.K_UP]:
+            vy = -bird_speed
+
+        if key_lst[pg.K_DOWN]:
+            vy = bird_speed
+
+        # 背景と同じ速度で左に移動
+        kk_rct.move_ip((-bg_speed + vx, vy))
+
+        # 画面から出ないようにする
+        if kk_rct.top < 0:
+            kk_rct.top = 0
+
+        if kk_rct.bottom > 600:
+            kk_rct.bottom = 600
+
+        if kk_rct.left < 0:
+            kk_rct.left = 0
+
+        if kk_rct.right > 800:
+            kk_rct.right = 800
+
+        # 文字を表示する
+        screen.blit(txt, txt_rct)
+
+        # こうかとんを表示する
+        screen.blit(kk_img, kk_rct)
+
         pg.display.update()
 
         tmr += 1
