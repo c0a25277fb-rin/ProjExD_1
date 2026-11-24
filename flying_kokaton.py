@@ -58,18 +58,25 @@ def main():
         screen.blit(bg_img2, [-x + 1600, 0])
         screen.blit(bg_img, [-x + 3200, 0])
 
-        # こうかとんを上下に移動させる
+ 
+        # こうかとんの移動量
+        dx = -bg_speed / 100
+        dy = 0
+
         if key_lst[pg.K_UP]:
-            # kk_rct.y -= bird_speed
-            kk_rct.move_ip((0,-1))
+            dy -= bird_speed
 
         if key_lst[pg.K_DOWN]:
-            # kk_rct.y += bird_speed
-            kk_rct.move_ip((0,+1))
+            dy += bird_speed
+
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1,0))
+            dx -= bird_speed
+
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((+1,0))
+            dx += bird_speed
+
+        # こうかとんを移動
+        kk_rct.move_ip(dx, dy)
 
 
         # 画面から出ないようにする
