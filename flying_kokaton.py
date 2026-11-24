@@ -59,22 +59,41 @@ def main():
         screen.blit(bg_img, [-x + 3200, 0])
 
  
+        # # こうかとんの移動量
+        # dx = -bg_speed / 100
+        # dy = 0
+
+        # if key_lst[pg.K_UP]:
+        #     dy -= bird_speed
+
+        # if key_lst[pg.K_DOWN]:
+        #     dy += bird_speed
+
+        # if key_lst[pg.K_LEFT]:
+        #     dx -= bird_speed
+
+        # if key_lst[pg.K_RIGHT]:
+        #     dx += bird_speed
+
+        # # こうかとんを移動
+        # kk_rct.move_ip(dx, dy) -->演習問題１
+
         # こうかとんの移動量
         dx = -bg_speed / 100
         dy = 0
-
+        
         if key_lst[pg.K_UP]:
             dy -= bird_speed
-
+        
         if key_lst[pg.K_DOWN]:
             dy += bird_speed
-
+        
         if key_lst[pg.K_LEFT]:
             dx -= bird_speed
-
+        
         if key_lst[pg.K_RIGHT]:
             dx += bird_speed
-
+        
         # こうかとんを移動
         kk_rct.move_ip(dx, dy)
 
