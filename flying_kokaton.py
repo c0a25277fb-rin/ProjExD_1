@@ -4,7 +4,9 @@ import sys
 import math
 import pygame as pg
 
+
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 def main():
@@ -53,65 +55,7 @@ def main():
         # 背景を高速で移動させる
         x = (tmr * bg_speed) % 3200
 
-        screen.blit(bg_img, [-x, 0])
-        screen.blit(bg_img2, [-x + 1600, 0])
-        screen.blit(bg_img, [-x + 3200, 0])
-
-  
-        # # こうかとんの移動量
-        # dx = -bg_speed / 100
-        # dy = 0
-
-        # if key_lst[pg.K_UP]:
-        #     dy -= bird_speed
-
-        # if key_lst[pg.K_DOWN]:
-        #     dy += bird_speed
-
-        # if key_lst[pg.K_LEFT]:
-        #     dx -= bird_speed
-
-        # if key_lst[pg.K_RIGHT]:
-        #     dx += bird_speed
-
-        # # こうかとんを移動
-        # kk_rct.move_ip(dx, dy) -->演習問題１
-
-        # こうかとんの移動量
-
-        dx = -bg_speed / 100
-        dy = 0
-
-        if key_lst[pg.K_UP]:
-            dy -= bird_speed
-
-        if key_lst[pg.K_DOWN]:
-            dy += bird_speed
-
-        if key_lst[pg.K_LEFT]:
-            dx -= bird_speed
-
-        if key_lst[pg.K_RIGHT]:
-            dx += bird_speed
-
-        # こうかとんを移動
-        kk_rct.move_ip(dx, dy)
-
-
-
-        # 画面から出ないようにする
-        if kk_rct.top < 0:
-            kk_rct.top = 0
-
-        if kk_rct.bottom > 600:
-            kk_rct.bottom = 600
-
-        # 文字を表示する
-        screen.blit(txt, txt_rct)
-
-        # こうかとんを表示する
-        screen.blit(kk_img, kk_rct)
-
+        screen.blit(bg_img, [0, 0])
         pg.display.update()
 
         tmr += 1
